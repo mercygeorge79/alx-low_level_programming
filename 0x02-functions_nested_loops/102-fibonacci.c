@@ -1,45 +1,28 @@
 #include <stdio.h>
 
 /**
-  * main - Prints the first 98 fibonacci numbers without hardcode.
+  * main - Prints the first 50 Fibronacci numbers,
+  * starting with 1 and 2 followed by a new line.
   *
-  * Return: Always 0 success
- */
+  * Return: Always 0 success.
+  */
 int main(void)
 {
-	unsigned long int p;
-	unsigned long int str = 1;
-	unsigned long int end = 2;
-	unsigned long int l = 1000000000;
-	unsigned long int str1;
-	unsigned long int str2;
-	unsigned long int end1;
-	unsigned long int end2;
+	int p;
+	unsigned long fib1 = 0, fib2 = 1, sum;
 
-	printf("%lu", str);
-
-	for (p = 1; p < 91; p++)
+	for (p = 0; p < 50; p++)
 	{
-		printf(", %lu", end);
-		end += str;
-		str = end - str;
-	}
+		sum = fib1 + fib2;
+		printf("%lu", sum);
 
-	str1 = (str / l);
-	str2 = (str % l);
-	end1 = (end / l);
-	end2 = (end % l);
+		fib1 = fib2;
+		fib2 = sum;
 
-	for (p = 92; p < 99; ++p)
-	{
-		printf(", %lu", end1 + (end2 / l));
-		printf("%lu", end2 % l);
-		end1 = end1 + str1;
-		str1 = end1 - str1;
-		end2 = end2 + str2;
-		str2 = end2 - str2;
+		if (p == 49)
+			printf("\n");
+		else
+			printf(", ");
 	}
-	printf("\n");
 	return (0);
-
 }
