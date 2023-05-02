@@ -1,28 +1,28 @@
 #include "main.h"
+
 /**
- * puts2 -  function should print only one character out of two
- * starting with the first one
- *@str: Input
- *Return: print
-*/
+  * puts2 - prints characters of a string, starting with the first
+  * @str: string
+  * Return: Print.
+  */
 void puts2(char *str)
 {
-	int z = 0;
-	int t = 0;
-	char *s = str;
-	int k;
+	int star = 0;
+	int p = 0;
+	char *a = str;
+	int q;
 
-	while (*s != '\0')
+	while (*a != '\0')
 	{
-		s++;
-		z++;
+		a++;
+		star++;
 	}
-	t = z - 1;
-	for (k = 0; k <= t ; k++)
+	p = star - 1;
+	for (q = 0; q <= p; q++)
 	{
-		if (k % 2 == 0)
+		if (q % 2 == 0)
 		{
-			_putchar(str[0]);
+			_putchar(str[q]);
 		}
 	}
 	_putchar('\n');
