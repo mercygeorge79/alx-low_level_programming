@@ -1,97 +1,72 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * count_word - helper function to count the number of words in a string
- * @s: string to evaluate
- * Return: number of words
- */
-
-int count_word(char *s)
-
+  * word_poll - to count no. of words in a string
+  * @s: string
+  * Return: Number of words.
+  */
+int word_poll(char *s)
 {
-	int flag, c, w;
-	flag = 0;
-	w = 0;
+	int mark, p, q;
 
-	for (c = 0; s[c] != '\0'; c++)
+	mark = 0;
+	q = 0;
 
+	for (p = 0; s[p] != '\0'; p++)
 	{
-		if (s[c] == ' ')
-
-			flag = 0;
-
-		else if (flag == 0)
-
+		if (s[p] == ' ')
+			mark = 0;
+		else if (mark == 0)
 		{
-			flag = 1;
-			w++;
+			mark = 1;
+			q++;
 		}
 	}
-
-	return (w);
+	return (q);
 }
 
 /**
- * *strtow - splits a string into words
- * @str: string to split
- * Return: pointer to an array of strings (Success)
- * or NULL (Error)
- */
-
+  * **strtow - splits a string into words
+  * @str: string
+  * Return: Pointer to array of strings for succss, NULL for error
+  */
 char **strtow(char *str)
-
 {
-	char **matrix, *tmp;
+	char **class, *act;
+	int r, s = 0, length = 0, wrds, t = 0, beg, end;
 
-	int i, k = 0, len = 0, words, c = 0, start, end;
-
-	while (*(str + len))
-		len++;
-
-	words = count_word(str);
-
-	if (words == 0)
-
+	while (*(str + length))
+		length++;
+	wrds = word_poll(str);
+	if (wrds == 0)
 		return (NULL);
 
-	matrix = (char **) malloc(sizeof(char *) * (words + 1));
-
-	if (matrix == NULL)
-
+	class = (char **) malloc(sizeof(char *) * (wrds + 1));
+	if (class == NULL)
 		return (NULL);
 
-	for (i = 0; i <= len; i++)
-
+	for (r = 0; r <= length; r++)
 	{
-		if (str[i] == ' ' || str[i] == '\0')
+		if (str[r] == ' ' || str[r] == '\0')
 		{
-			if (c)
+			if (t)
 			{
-				end = i;
-
-				tmp = (char *) malloc(sizeof(char) * (c + 1));
-
-				if (tmp == NULL)
-
+				end = r;
+				act = (char *) malloc(sizeof(char) * (t + 1));
+				if (act == NULL)
 					return (NULL);
-
-				while (start < end)
-					*tmp++ = str[start++];
-
-				*tmp = '\0';
-				matrix[k] = tmp - c;
-				k++;
-				
-				c = 0;
+				while (beg < end)
+					*act++ = str[beg++];
+				*act = '\0';
+				class[s] = act - t;
+				s++;
+				t = 0;
 			}
 		}
-
-		else if (c++ == 0)
-			start = i;
+		else if (t++ == 0)
+			beg = r;
 	}
-
-	matrix[k] = NULL;
-
-	return (matrix);
+	class[s] = NULL;
+	return (class);
 }
