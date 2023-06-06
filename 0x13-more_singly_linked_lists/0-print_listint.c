@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "lists.h"
 
 /**
@@ -12,10 +13,11 @@ size_t count = 0;
 
 while (h != NULL)
 {
-count++;
 printf("%d\n", h->n);
 h = h->next;
+count++;
 }
 
 return count;
 }
+
