@@ -11,13 +11,15 @@ size_t print_listint(const listint_t *h)
 {
 size_t count = 0;
 
+FILE *stream = stdout;
+
 while (h != NULL)
 {
-printf("%d\n", h->n);
-h = h->next;
 count++;
+fprintf(stream, "%d\n", h->n);
+h = h->next;
 }
 
-return count;
+return (count);
 }
 
