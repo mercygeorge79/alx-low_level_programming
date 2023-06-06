@@ -7,12 +7,14 @@
 * @idx: The index of the list where the new node should be added.
 * @n: The integer to add to the listint_t list.
 *
-* Return: If it is not possible to add the new node at index idx, return NULL.
-*         Otherwise - The address of the new node.
+* Return: The address of the new node, or NULL if it failed.
+*         If it is not possible to add the new node at index idx,
+*         do not add the new node and return NULL.
 */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-listint_t *new_node, *temp;
+listint_t *new_node, *temp = *head;
+unsigned int count = 0;
 
 if (head == NULL)
 return (NULL);
@@ -20,14 +22,13 @@ return (NULL);
 if (idx == 0)
 return (add_nodeint(head, n));
 
-temp = *head;
-
-while (idx > 1)
+while (count < idx - 1)
 {
 if (temp == NULL)
 return (NULL);
+
 temp = temp->next;
-idx--;
+count++;
 }
 
 if (temp == NULL)
