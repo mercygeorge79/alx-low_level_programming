@@ -27,4 +27,3 @@ num = (num << 1) + (b[i] - '0');
 
 return (num);
 }
-
